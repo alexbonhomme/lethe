@@ -28,7 +28,7 @@ pio device monitor -b 9600
 
 ## Configuration
 
-- **Display:** SH1106 shows the **live output waveform** (mixer → I2S) as a scope trace. I2C address is set in `src/main.cpp` as `DISPLAY_I2C_ADDR` (default **0x3C**; try **0x3D** if the display stays off).
+- **Display:** SH1106 shows the **live output waveform** (mixer → I2S) as a scope trace. I2C address is set in `src/display.h` as `Display::kI2CAddr` (default **0x3C**; try **0x3D** if the display stays off).
 - **Knobs:** A0–A2 → waveform frequencies; A3 → filter frequency (exp-scaled); A6–A9 → amplitudes (0–1).
 
 ### If the screen or DAC does not work (3.3 V OK)
@@ -39,5 +39,6 @@ pio device monitor -b 9600
 ## Project layout
 
 - `platformio.ini` — Teensy 4.0 env, Adafruit SH110x + GFX (display).
-- `src/main.cpp` — Audio graph, knobs, SH1106 waveform scope (init and draw in setup/loop).
+- `src/main.cpp` — Audio graph, knobs; delegates display and scope to `Display`.
+- `src/display.h`, `src/display.cpp` — Display class: SH1106 init, splash, scope ring buffer and throttled scope drawing.
 - Legacy sketch: `D_D_teensy_v6_bc.ino` (reference only; firmware is in `src/main.cpp`).
