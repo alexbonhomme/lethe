@@ -23,13 +23,13 @@ pio run -e teensy40 -t upload
 Serial monitor (e.g. filter frequency debug):
 
 ```bash
-pio device monitor -b 9600
+pio device monitor -b 115200
 ```
 
 ## Configuration
 
 - **Display:** SH1106 shows the **live output waveform** (post-reverb, to I2S) as a scope trace. I2C address is set in `src/display.h` as `Display::kI2CAddr` (default **0x3C**; try **0x3D** if the display stays off).
-- **Knobs:** A0/A1 → oscillator 1 frequency and amplitude; A2/A3 → oscillator 2; A6/A7 → oscillator 3; A8 → filter frequency (exp-scaled); A9 → reverb room size (0–1).
+- **Knobs:** A0/A1 → oscillator 1 frequency and amplitude; A2/A3 → oscillator 2; A6/A7 → oscillator 3; A8 → filter frequency (exp-scaled); A9 → reverb room size (0–1). When room size is 0, the reverb is bypassed and the dry signal is heard.
 
 ### If the screen or DAC does not work (3.3 V OK)
 
