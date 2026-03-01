@@ -1,6 +1,6 @@
-# Drone & Drama
+# Lethe
 
-Three sine oscillators plus pink noise through a state-variable filter and bitcrusher. Built for **Teensy 4.0** with a **PCM5102** DAC on **I2S2**. Optional OLED display (Adafruit SH110x + GFX; I2C).
+Open-source drone generator inspired by the [Drone & Drama](https://github.com/bjc01/Drone_Drama_v2) project (Barry Joseph Cullen). Three bandlimited-saw oscillators through a state-variable filter, waveshaper, and stereo reverb. Built for **Teensy 4.0** with a **PCM5102** DAC on **I2S2**. Optional OLED scope (Adafruit SH110x + GFX; I2C).
 
 ## Requirements
 
@@ -28,8 +28,8 @@ pio device monitor -b 9600
 
 ## Configuration
 
-- **Display:** SH1106 shows the **live output waveform** (mixer → I2S) as a scope trace. I2C address is set in `src/display.h` as `Display::kI2CAddr` (default **0x3C**; try **0x3D** if the display stays off).
-- **Knobs:** A0–A2 → waveform frequencies; A3 → filter frequency (exp-scaled); A6–A9 → amplitudes (0–1).
+- **Display:** SH1106 shows the **live output waveform** (post-reverb, to I2S) as a scope trace. I2C address is set in `src/display.h` as `Display::kI2CAddr` (default **0x3C**; try **0x3D** if the display stays off).
+- **Knobs:** A0/A1 → oscillator 1 frequency and amplitude; A2/A3 → oscillator 2; A6/A7 → oscillator 3; A8 → filter frequency (exp-scaled); A9 → reverb room size (0–1).
 
 ### If the screen or DAC does not work (3.3 V OK)
 
