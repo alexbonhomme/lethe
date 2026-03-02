@@ -108,7 +108,7 @@ void setup() {
   mixerOutL.gain(1, 0.0f);
   mixerOutR.gain(1, 0.0f);
 
-  amp.gain(5.0f);
+  amp.gain(2.0f);
   ampOutLeft.gain(0.35f);
   ampOutRight.gain(0.35f);
 
